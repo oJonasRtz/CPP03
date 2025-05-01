@@ -1,7 +1,7 @@
 #include "ClapTrap.hpp"
 
 //	Constructors/Destructor
-
+#pragma region Constructor
 ClapTrap::ClapTrap(const std::string &name)
 {
 	std::cout << BRIGHT_BLUE << "ClapTrap " << name << ": Default constructor called.\n" RESET;
@@ -26,10 +26,19 @@ ClapTrap::~ClapTrap()
 {
 	std::cout << BRIGHT_RED << "ClapTrap " << name << ": Destructor called.\n" RESET;
 }
-
+int		ClapTrap::get_status(void) const
+{
+	return (energyPts);
+}
+std::ostream& operator<<(std::ostream &out, const ClapTrap &other)
+{
+	out << other.get_status();
+	return (out);
+}
+#pragma endregion
 
 //	Methods
-
+#pragma region Methods
 void	ClapTrap::attack(const std::string &target)
 {
 	if (!energyPts)
@@ -57,3 +66,4 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	energyPts--;
 	hitPts += amount;
 }
+#pragma endregion
