@@ -19,7 +19,12 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &other)
 {
 	std::cout << BRIGHT_BLUE "Assignment operator called.\n" RESET;
 	if (this != &other)
+	{
 		name = other.name;
+		attackDmg = other.attackDmg;
+		energyPts = other.energyPts;
+		hitPts = other.hitPts;
+	}
 	return (*this);
 }
 ClapTrap::~ClapTrap()

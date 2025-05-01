@@ -1,11 +1,13 @@
 
-NAME = 
+NAME = fragtrap
 
 CC = c++
 FLAGS = -g3 -Wall -Werror -Wextra -std=c++98
 
 INCLUDE = includes
-SRC = 	src/main.cpp
+SRC = 	src/ClapTrap.cpp\
+		src/FragTrap.cpp\
+		src/main.cpp
 OBJS = $(SRC:.cpp=.o)
 
 RM = rm -f
