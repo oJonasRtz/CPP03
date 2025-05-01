@@ -4,8 +4,11 @@
 
 ClapTrap::ClapTrap(const std::string &name)
 {
-	std::cout << BRIGHT_BLUE "Default constructor called.\n" RESET;
+	std::cout << BRIGHT_BLUE << "ClapTrap " << name << ": Default constructor called.\n" RESET;
 	this->name = name;
+	hitPts = 10;
+	energyPts = 10;
+	attackDmg = 0;
 }
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
@@ -15,18 +18,42 @@ ClapTrap::ClapTrap(const ClapTrap &other)
 ClapTrap& ClapTrap::operator=(const ClapTrap &other)
 {
 	std::cout << BRIGHT_BLUE "Assignment operator called.\n" RESET;
-	if (this != other)
+	if (this != &other)
 		name = other.name;
 	return (*this);
 }
 ClapTrap::~ClapTrap()
 {
-	std::cout << BRIGHT_RED "Destructor called.\n" RESET;
+	std::cout << BRIGHT_RED << "ClapTrap " << name << ": Destructor called.\n" RESET;
 }
 
 
 //	Methods
 
-void	ClapTrap::attack(const std::string &target){}
-void	ClapTrap::takeDamage(unsigned int amount){}
-void	ClapTrap::beRepaired(unsigned int amount){}
+void	ClapTrap::attack(const std::string &target)
+{
+	if (!energyPts)
+	{
+		std::cout << ORANGE "ClapTrap " << name << " has no energy to attack!\n" RESET; 
+		return ;
+	}
+	std::cout << "ClapTrap " << name << " attacks " << target;
+	std::cout << " causing " << attackDmg << " points of damage!\n";
+	energyPts--;
+}
+void	ClapTrap::takeDamage(unsigned int amount)
+{
+	std::cout << "ClapTrap " << name << " took " << amount << " damage!\n";
+	hitPts -= amount;
+}
+void	ClapTrap::beRepaired(unsigned int amount)
+{
+	if (!energyPts)
+	{
+		std::cout << ORANGE "ClapTrap " << name << " has no energy to repair!\n" RESET; 
+		return ;
+	}
+	std::cout << "ClapTrap " << name << " repaired " << amount << " hit points!\n";
+	energyPts--;
+	hitPts += amount;
+}
