@@ -26,9 +26,9 @@ ClapTrap::~ClapTrap()
 {
 	std::cout << BRIGHT_RED << "ClapTrap " << name << ": Destructor called.\n" RESET;
 }
-int		ClapTrap::get_status(void) const
+std::string		ClapTrap::get_status(void) const
 {
-	return (energyPts);
+	return (name);
 }
 std::ostream& operator<<(std::ostream &out, const ClapTrap &other)
 {
@@ -41,6 +41,11 @@ std::ostream& operator<<(std::ostream &out, const ClapTrap &other)
 #pragma region Methods
 void	ClapTrap::attack(const std::string &target)
 {
+	if (!hitPts)
+	{
+		std::cout << ORANGE "ClapTrap " << name << " is dead.\n" RESET;
+		return ;
+	}
 	if (!energyPts)
 	{
 		std::cout << ORANGE "ClapTrap " << name << " has no energy to attack!\n" RESET; 
@@ -52,11 +57,21 @@ void	ClapTrap::attack(const std::string &target)
 }
 void	ClapTrap::takeDamage(unsigned int amount)
 {
+	if (!hitPts)
+	{
+		std::cout << ORANGE "ClapTrap " << name << " is dead.\n" RESET;
+		return ;
+	}
 	std::cout << "ClapTrap " << name << " took " << amount << " damage!\n";
 	hitPts -= amount;
 }
 void	ClapTrap::beRepaired(unsigned int amount)
 {
+	if (!hitPts)
+	{
+		std::cout << ORANGE "ClapTrap " << name << " is dead.\n" RESET;
+		return ;
+	}
 	if (!energyPts)
 	{
 		std::cout << ORANGE "ClapTrap " << name << " has no energy to repair!\n" RESET; 

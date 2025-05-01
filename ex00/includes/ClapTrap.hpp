@@ -23,7 +23,7 @@ class ClapTrap
 		ClapTrap &operator=(const ClapTrap &other);
 		~ClapTrap();
 
-		int		get_status(void) const;
+		std::string	get_status(void) const;
 		//	Methods
 		void	attack(const std::string &target);
 		void	takeDamage(unsigned int amount);

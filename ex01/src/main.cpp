@@ -3,10 +3,18 @@
 
 int	main(void)
 {
-	ScavTrap	a("oi");
-	ScavTrap	b(a);
-	ScavTrap	c("lala");
+	ScavTrap	a("Xayah");
+	ScavTrap	b("Rakan");
 
-	c = b;
+	a.guardGate();
+	b.guardGate();
+	for (int i = 0; i < 6; i++)
+	{
+		a.attack("Rakan");
+		b.takeDamage(a.get_damage());
+		// b.beRepaired(2);
+	}
+	a.guardGate();
+	b.guardGate();
 	return (0);
 }
