@@ -44,7 +44,7 @@
 
 void	ScavTrap::guardGate(void)
 {
-	if (!hitPts)
+	if (hitPts <= 0)
 	{
 		std::cout << ORANGE "ScavTrap " << name << " is dead.\n" RESET;
 		return ;
@@ -53,7 +53,7 @@ void	ScavTrap::guardGate(void)
 }
 void	ScavTrap::attack(const std::string &target)
 {
-	if (!hitPts)
+	if (hitPts <= 0)
 	{
 		std::cout << ORANGE "ScavTrap " << name << " is dead.\n" RESET;
 		return ;

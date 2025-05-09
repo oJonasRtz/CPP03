@@ -8,8 +8,8 @@ int	main(void)
 	for (int i = 0; i < 15; i++)
 	{
 		a.attack("Rakan");
-		b.takeDamage(0);
-		b.beRepaired(5);
+		b.takeDamage(200);
+		b.beRepaired(0);
 	}
 
 	ClapTrap	c("Lucian");

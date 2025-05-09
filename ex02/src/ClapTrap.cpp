@@ -47,7 +47,7 @@
 #pragma region Methods
 	void	ClapTrap::attack(const std::string &target)
 	{
-		if (!hitPts)
+		if (hitPts <= 0)
 		{
 			std::cout << ORANGE "ClapTrap " << name << " is dead.\n" RESET;
 			return ;
@@ -63,7 +63,7 @@
 	}
 	void	ClapTrap::takeDamage(unsigned int amount)
 	{
-		if (!hitPts)
+		if (hitPts <= 0)
 		{
 			std::cout << ORANGE "ClapTrap " << name << " is dead.\n" RESET;
 			return ;
@@ -73,7 +73,7 @@
 	}
 	void	ClapTrap::beRepaired(unsigned int amount)
 	{
-		if (!hitPts)
+		if (hitPts <= 0)
 		{
 			std::cout << ORANGE "ClapTrap " << name << " is dead.\n" RESET;
 			return ;
